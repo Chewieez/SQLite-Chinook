@@ -5,7 +5,7 @@
 SELECT "Sales Agent", MAX("Total Sales")
 FROM (
 /* This selects the Sales Agents and their respective Total Sales(Invoices) for the year 2009 */
-SELECT e.FirstName || " " || e.LastName as "Sales Agent", Count(i.InvoiceId) as "Total Sales"
+SELECT e.FirstName || " " || e.LastName as "Sales Agent", SUM(i.Total) as "Total Sales"
 FROM Invoice i
 INNER JOIN Customer c ON i.CustomerId = c.CustomerId
 INNER JOIN Employee e ON c.SupportRepId = e.EmployeeId
